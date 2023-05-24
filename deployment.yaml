@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-django-application
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: django-todo-app
+  template:
+    metadata:
+      labels:
+        app: django-todo-app
+    spec:
+      containers:
+        - name: todo-app
+          image: moveho/django-todo:latest
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: 200m
+            limits:
+              cpu: 500m 
+

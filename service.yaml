@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2023-05-24T00:27:47Z"
+  name: my-django-application
+  namespace: default
+  resourceVersion: "830477"
+  uid: c7e921f5-6a7e-4e02-8351-75970242e3bc
+spec:
+  clusterIP: 10.97.176.96
+  clusterIPs:
+  - 10.97.176.96
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 30535
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: django-todo-app
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
